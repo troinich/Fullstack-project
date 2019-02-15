@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <a href="/posts"> Go to the list of events></a>
+    <router-link v-bind:to="{ name: 'Posts' }" class>Go to the list of events</router-link>
+
   </div>
 </template>
 
@@ -10,7 +11,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'There will be the first page'
+      msg: 'There will be the logo'
     }
   }
 }
@@ -18,6 +19,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+div .hello{
+  background-color: #231F42;
+}
 h1, h2 {
   font-weight: normal;
 }

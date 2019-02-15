@@ -1,17 +1,29 @@
 <template>
   <div class="posts">
-    <h1>Edit Post</h1>
-      <div class="form">
-        <div>
-          <input type="text" name="title" placeholder="TITLE" v-model="title">
-        </div>
-        <div>
-          <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
-        </div>
-        <div>
-          <button class="app_post_btn" @click="updatePost">Update</button>
-        </div>
+    <h1>Edit Event</h1>
+    <div class="form">
+      <div>
+        <input type="text" placeholder="Name" v-model="name">
       </div>
+      <div>
+        <input type="text" placeholder="Where" v-model="place">
+      </div>
+      <div>
+        <input type="text" placeholder="Date" v-model="date">
+      </div>
+      <div>
+        <input type="text" placeholder="From time" v-model="start">
+      </div>
+      <div>
+        <input type="text" placeholder="To time" v-model="end">
+      </div>
+      <div>
+        <input type="text" placeholder="# Seats" v-model="seats">
+      </div>
+      <div>
+        <button class="app_post_btn" @click="updatePost">Update</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,8 +33,12 @@ export default {
   name: 'EditPost',
   data () {
     return {
-      title: '',
-      description: ''
+      name: '',
+      place: '',
+      date: '',
+      start: '',
+      end: '',
+      seats: ''
     }
   },
   mounted () {
@@ -35,12 +51,22 @@ export default {
       })
       this.title = response.data.title
       this.description = response.data.description
+      this.name = response.data.name
+      this.place = response.data.place
+      this.date = response.data.date
+      this.start = response.data.start
+      this.end = response.data.end
+      this.seats = response.data.seats
     },
     async updatePost () {
       await PostsService.updatePost({
         id: this.$route.params.id,
-        title: this.title,
-        description: this.description
+        name: this.name,
+        place: this.place,
+        date: this.date,
+        start: this.start,
+        end: this.end,
+        seats: this.seats
       })
       this.$router.push({ name: 'Posts' })
     }
@@ -48,7 +74,8 @@ export default {
 }
 </script>
 <style type="text/css">
-.form input, .form textarea {
+.form input,
+.form textarea {
   width: 500px;
   padding: 10px;
   border: 1px solid #e0dede;

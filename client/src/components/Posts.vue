@@ -1,38 +1,43 @@
 <template>
   <div class="posts">
-    <h1>posts</h1>
     <div v-if="posts.length > 0" class="table-wrap">
-      <div>
-        <router-link v-bind:to="{ name: 'NewPost' }" class>Add post</router-link>
-      </div>
+      <div></div>
       <table>
         <tr>
-          <td>Title</td>
-          <td width="550">Description</td>
+          <td>NAMN</td>
+          <td>VAR</td>
+          <td>ANTAL PLATSER</td>
+          <td>SÅLDA BILJETTER</td>
+
           <td width="100" align="center">Action</td>
         </tr>
-        <tr v-for="post in posts" :key="post">
-          <td>{{ post.title }}</td>
-          <td>{{ post.description }}</td>
+        <tr v-for="(post, index) in posts" :key="index">
+          <td>{{ post.name }}</td>
+          <td>{{ post.place }}</td>
+          <td>{{ post.total }}</td>
+          <td>{{ post.sold }}</td>
+
           <td align="center">
-            <router-link v-bind:to="{ name: 'EditPost', params: { id: post._id } }">Edit</router-link>|
             <a href="#" @click="deletePost(post._id)">Delete</a>
           </td>
         </tr>
       </table>
     </div>
-    <div v-else>There are no posts.. Lets add one now
-      <br>
-      <br>
-      <router-link v-bind:to="{ name: 'NewPost' }" class="add_post_link">Add Post</router-link>
-    </div>
+    <div v-else>There are no events.. Lets add one now</div>
+    <NewPost/>
   </div>
 </template>
 
 <script>
 import PostsService from '@/services/PostsService'
+import NewPost from './NewPost'
+
 export default {
   name: 'posts',
+  components: {
+    NewPost
+  },
+
   data () {
     return {
       posts: []
