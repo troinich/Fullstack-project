@@ -2,6 +2,34 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const mongoose = require('mongoose');
+
+const app = express()
+
+//CONNECT TO MONGOdb
+mongoose
+.connect('mongodb://localhost/MEVN', { useNewUrlParser: true })
+.then(() => console.log('MongoDB Connected'))
+.catch((err) => console.log(err));
+mongoose.Promise = global.Promise;
+
+app.use(morgan('combined'))
+app.use(bodyParser.json())
+app.use(cors())
+
+//initialize routes
+app.use(require('../routes/api'))
+
+
+//app.set('port', process.env.PORT || 8081);
+app.listen(process.env.PORT || 8081, function(){
+    console.log('There is connection to backend port')
+})
+
+/* const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const morgan = require('morgan')
 var Post = require("../models/post");
 
 
@@ -10,10 +38,10 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-const mongodb_conn_module = require('./mongodbConnModule');
-var db = mongodb_conn_module.connect();
+/* const mongodb_conn_module = require('./mongodbConnModule');
+var db = mongodb_conn_module.connect(); */
 
-// Fetch all posts
+/* // Fetch all posts
 app.get('/posts', (req, res) => {
     Post.find({}, 'name place date start end seats', function (error, posts) {
       if (error) { console.error(error); }
@@ -73,7 +101,7 @@ app.post('/posts', (req, res) => {
 	})
 }) */
 
-app.delete('/posts/:id', (req, res) => {
+/*app.delete('/posts/:id', (req, res) => {
 	var db = req.db;
 	Post.remove({
 		_id: req.params.id
@@ -94,4 +122,4 @@ app.get('/post/:id', (req, res) => {
 	})
 })
 
-app.listen(process.env.PORT || 8081)
+app.listen(process.env.PORT || 8081) */

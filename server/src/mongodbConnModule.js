@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+/* var mongoose = require('mongoose');
 
 module.exports.connect = function() {
 mongoose.connect('mongodb://localhost/MEVN', { useNewUrlParser: true }); 
@@ -10,3 +10,4 @@ db.once("open", function(callback){
 return db;
 }
 
+ */
