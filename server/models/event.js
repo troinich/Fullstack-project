@@ -33,7 +33,7 @@ module.exports.addEvent = function (event, callback) {
 //update en event
 module.exports.updateEvent = function (id, event, options, callback) {
     var query = { _id: id };
-    var update = {
+    /* var update = {
         name: event.name,
         place: event.place,
         date: event.date,
@@ -42,9 +42,9 @@ module.exports.updateEvent = function (id, event, options, callback) {
         price: event.price,
         available: event.available,
         sold: event.sold
-    };
+    }; */
         
-    Event.findOneAndUpdate(query, update, options, callback)
+    Event.findOneAndUpdate(query, event, options, callback)
 }
 
 //delete one event

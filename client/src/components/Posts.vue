@@ -24,19 +24,19 @@
       </table>
     </div>
     <div v-else>There are no events.. Lets add one now</div>
-    <NewPost/>
+    <!-- <NewPost/> -->
   </div>
 </template>
 
 <script>
 import PostsService from '@/services/PostsService'
-import NewPost from './NewPost'
+// import NewPost from './NewPost'
 
 export default {
   name: 'posts',
-  components: {
+  /*  components: {
     NewPost
-  },
+  }, */
 
   data () {
     return {

@@ -69,7 +69,7 @@ export default {
       })
       this.getPost()
       this.$router.push({ name: 'Posts' })
-      this.getPosts()
+      this.getPost()
     }
   }
 }

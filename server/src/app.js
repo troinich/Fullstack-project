@@ -35,6 +35,7 @@ app.get('/api/events', function (req, res) {
     Event.getEvents(function (err, events) {
         if (err)
             throw err;
+            
         res.json(events)
     })
 
@@ -45,6 +46,7 @@ app.get('/api/events/:_id', function (req, res) {
     Event.getEventById(req.params._id, function (err, event) {
         if (err)
             throw err;
+
         res.json(event)
     })
 
@@ -56,6 +58,7 @@ app.post('/api/events/', function (req, res) {
     Event.addEvent(event, function (err, event) {
         if (err)
             throw err;
+
         res.json(event)
     })
 })
@@ -78,6 +81,7 @@ app.delete('/api/events/:_id', function (req, res) {
     Event.deleteEvent(id, function (err, event) {
         if (err)
             throw err;
+
         res.json(event)
     })
 })
