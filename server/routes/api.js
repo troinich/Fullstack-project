@@ -1,61 +1,45 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/post');
+const Event = require('../models/event');
 
 
-//var urlencodedParser = bodyParser.urlencoded({ extended: false });
+//show all events
+router.get('/events', function (req, res, next) {
+    Event.find({}).then(function (events) {
+        res.send(events)
+    })
+});
 
-router.get('/posts', function (req, res, next) {
-    Post.find({}, function (err, posts) {
-        if (err) return next(err);
-        /*   res.json(posts);
-        });
-      }); */
-        res.send({
-            posts: posts
-        })
-    }).sort({ _id: -1 })
+//show one
+router.get('/events/:_id', function (req, res) {
+    Event.findById({_id:req.params._id}).then(function (event) {
+     res.send(event)
+    })
 })
 
-//a list of events for the admin
-router.get('/admin', function (req, res, next) {
-    Post.find({}, function (err, posts) {
-        if (err) return next(err);
-        /*   res.json(posts);
-        });
-      }); */
-        res.send({
-            posts: posts
-        })
-    }).sort({ _id: -1 })
-})
 
-//add a new event to db
-/* router.post('/admin', function (req, res, next) {
-    Post.create(req.body).then(function (post) {
-        res.send(post);
+router.post('/events', function (req, res, next) {
+    //create a new instance of Schema var event = new Event(req.body);
+    //save do DB event.save();`
+    //or instead of new instance and save =>
+    Event.create(req.body).then(function (event) {
+        res.send(event)
     }).catch(next);
-}) */
-
-
-/* router.post('/new', function(req, res, next) {
-    Post.create(req.body, function (err, post) {
-      if (err) return next(err);
-      res.json(post);
-    });
-  });
- */
-
-router.post('/new', function (req, res) {
-    //get data from the view and add to mongoDB
-    let resp = Post.create(req.body);
-    console.log(resp);
-    res.status(200)
 })
 
-//show a ticket to buy
-router.get('/ticket/:id', function (req, res, next) {
-    res.send({ type: 'GET' })
+
+//update one
+router.put('/events/:id', function (req, res, next) {
+    Event.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }).then(function (event) {
+        res.send(event)
+    })
+})
+
+//delete one 
+router.delete('/events/:id', function (req, res, next) {
+    Event.findByIdAndDelete({ _id: req.params.id }).then(function (event) {
+        res.send(event)
+    })
 })
 
 module.exports = router
