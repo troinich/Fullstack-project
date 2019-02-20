@@ -4,22 +4,23 @@
       <div></div>
       <table>
         <tr>
-          <td>NAMN</td>
-          <td>VAR</td>
-          <td>ANTAL PLATSER</td>
-          <td>SÅLDA BILJETTER</td>
+          <td>Name</td>
+          <td>Place</td>
+          <td>Date</td>
+          <td>Start</td>
+          <td>End</td>
+          <td>Price</td>
 
-          <td width="100" align="center">Action</td>
         </tr>
         <tr v-for="(post, index) in posts" :key="index">
           <td>{{ post.name }}</td>
           <td>{{ post.place }}</td>
-          <td>{{ post.total }}</td>
-          <td>{{ post.sold }}</td>
+          <td>{{ post.date }}</td>
+          <td>{{ post.start }}</td>
+          <td>{{ post.end }}</td>
+          <td>{{ post.price }}</td>
 
-          <td align="center">
-            <a href="#" @click="deletePost(post._id)">Delete</a>
-          </td>
+            <!-- <a href="#" @click="deletePost(post._id)">Delete</a> -->
         </tr>
       </table>
     </div>
@@ -49,13 +50,13 @@ export default {
   methods: {
     async getPosts () {
       const response = await PostsService.fetchPosts()
-      this.posts = response.data.posts
-    },
+      this.posts = response.data
+    }/* ,
     async deletePost (id) {
       await PostsService.deletePost(id)
       this.getPosts()
       this.$router.push({ name: 'Posts' })
-    }
+    } */
   }
 }
 </script>
