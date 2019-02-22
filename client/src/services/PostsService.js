@@ -10,13 +10,16 @@ export default {
   /*  updatePost (params) {
     return Api().put('posts/' + params.id, params)
   }, */
-  getPost (params) {
-    return Api().get('events/' + params.id)
+  getEvent (params) {
+    return Api().get('events/' + params._id)
   },
-  deletePost (id) {
+  /* deletePost (id) {
     return Api().delete('events/' + id)
-  },
+  }, */
   fetchTickets () {
     return Api().get('tickets')
+  },
+  getTicket (params) {
+    return Api().get('tickets' + params.id)
   }
 }

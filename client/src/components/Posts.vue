@@ -1,17 +1,16 @@
 <template>
   <div class="posts">
     <div v-if="posts.length > 0" class="table-wrap">
-      <div></div>
       <table class="test">
         <tr>
           <th>Name</th>
           <th>Place</th>
           <th>Date</th>
-          <th>Start</td>
+          <th>Start</th>
           <th>End</th>
           <th>Price</th>
         </tr>
-        <tr v-for="(post, index) in posts" :key="index">
+        <tr v-for="(post, index) in posts" :key="index" @click="$router.push('/events/'+post._id)">
           <td>{{ post.name }}</td>
           <td>{{ post.place }}</td>
           <td>{{ post.date }}</td>
@@ -22,20 +21,14 @@
       </table>
     </div>
     <div v-else>There are no events.. Lets add one now</div>
-    <!-- <NewPost/> -->
   </div>
 </template>
 
 <script>
 import PostsService from '@/services/PostsService'
-// import NewPost from './NewPost'
 
 export default {
   name: 'posts',
-  /*  components: {
-    NewPost
-  }, */
-
   data () {
     return {
       posts: []

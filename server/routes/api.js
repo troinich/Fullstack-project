@@ -17,7 +17,7 @@ router.get('/events/:_id', function (req, res) {
     })
 })
 
-
+//add an event
 router.post('/events', function (req, res, next) {
     //create a new instance of Schema var event = new Event(req.body);
     //save do DB event.save();`
@@ -26,7 +26,6 @@ router.post('/events', function (req, res, next) {
         res.send(event)
     }).catch(next);
 })
-
 
 //update one
 router.put('/events/:id', function (req, res, next) {
