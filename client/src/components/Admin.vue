@@ -1,7 +1,7 @@
 <template>
   <div class="admin">
     <div v-if="posts.length > 0" class="table-wrap">
-        <table class ="test"> 
+        <table class ="test">
         <tr>
           <th>Namn</th>
           <th>Var</th>
@@ -107,7 +107,6 @@ a {
   text-decoration: none;
   padding: 1%;
   font-weight: bold;
-  
 }
 a.add_post_link {
   background: #4d7ef7;
