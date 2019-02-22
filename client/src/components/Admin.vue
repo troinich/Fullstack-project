@@ -1,14 +1,12 @@
-/* eslint-disable */
-
 <template>
   <div class="admin">
     <div v-if="posts.length > 0" class="table-wrap">
-        <table>
+        <table class ="test"> 
         <tr>
-          <td>Namn</td>
-          <td>Var</td>
-          <td>Antal platser</td>
-          <td>Sälda biljetter</td>
+          <th>Namn</th>
+          <th>Var</th>
+          <th>Antal platser</th>
+          <th>Sälda biljetter</th>
         </tr>
         <tr v-for="(post, index) in posts" :key="index">
           <td>{{ post.name }}</td>
@@ -19,15 +17,18 @@
       </table>
     </div>
     <div v-else>Any available events</div>
+    <br>
     <aside class="form">
-                <input type="text" placeholder="Name" v-model="name" required>
-                <input type="text" placeholder="Where" v-model="place" required>
-                <input type="text" placeholder="Date" v-model="date" required>
-                <input type="text" placeholder="From time" v-model="start" required>
-                <input type="text" placeholder="To time" v-model="end" required>
-                <input type="number" placeholder="Price" v-model="price" required>
-                <a href="#" class="btn" @click="createEvent">Add the event</a>
+                <input type="text" placeholder="Name" v-model="name">
+                <input type="text" placeholder="Where" v-model="place">
+                <input type="text" placeholder="Date" v-model="date">
+                <input type="text" placeholder="From time" v-model="start">
+                <input type="text" placeholder="To time" v-model="end">
+                <input type="number" placeholder="Price" v-model="price">
             </aside>
+            <br>
+                <a href="#" class="btn" @click="createEvent">Add the event</a>
+
   </div>
 </template>
 
@@ -35,7 +36,7 @@
 import PostsService from '@/services/PostsService'
 
 export default {
-  name: 'posts',
+  name: 'Admin',
   data () {
     return {
       posts: []
@@ -66,31 +67,47 @@ export default {
 }
 </script>
 <style type="text/css">
+body{
+  margin: 5%;
+  padding-bottom: 10%;
+}
 .table-wrap {
   width: 60%;
   margin: 0 auto;
   text-align: center;
 }
-table th,
+table th {
+  text-align: center;
+}
 table tr {
   text-align: left;
+  padding: 2%;
 }
 table thead {
-  background: #f2f2f2;
+color:pink;
 }
 table tr td {
   padding: 10px;
 }
-table tr:nth-child(odd) {
-  background: #f2f2f2;
+
+tr:nth-child(even) {
+  background: #393366;
 }
-table tr:nth-child(1) {
-  background: #4d7ef7;
-  color: #fff;
+aside{
+    padding-top: 1%;
+}
+table.test {
+    border-collapse: separate;
+    border-spacing: 10px;
+    *border-collapse: expression('separate', cellSpacing = '10px');
 }
 a {
-  color: #4d7ef7;
+  display: block;
+  color: pink;
   text-decoration: none;
+  padding: 1%;
+  font-weight: bold;
+  
 }
 a.add_post_link {
   background: #4d7ef7;

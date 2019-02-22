@@ -15,5 +15,8 @@ export default {
   },
   deletePost (id) {
     return Api().delete('events/' + id)
+  },
+  fetchTickets () {
+    return Api().get('tickets')
   }
 }

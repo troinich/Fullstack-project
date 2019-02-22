@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
+/* 
 var PostSchema = new Schema({
   name: String,
   place: String,
@@ -12,7 +12,13 @@ var PostSchema = new Schema({
   price: Number,
   seats: String
 
-});
+}); */
 
-var Post = mongoose.model("Post", PostSchema);
-module.exports = Post;
+let TicketSchema = new Schema({
+  event: Object,
+  code: String,
+  used: { type: Boolean, default: false }
+})
+
+var Ticket = mongoose.model("Ticket", TicketSchema);
+module.exports = Ticket;

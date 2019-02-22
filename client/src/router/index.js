@@ -27,10 +27,16 @@ export default new Router({
       component: Verify
     },
     {
-      path: '/ticket',
+      path: '/tickets',
       name: 'Ticket',
       component: Ticket
+    },
+    {
+      path: '/pay',
+      name: 'pay',
+      component: Pay
     }, */
+
     {
       path: '/admin',
       name: 'Admin',

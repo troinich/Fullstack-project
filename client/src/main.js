@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import VueSimpleSVG from 'vue-simple-svg'
+Vue.use(VueSimpleSVG)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

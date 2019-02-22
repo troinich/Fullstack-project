@@ -2,15 +2,14 @@
   <div class="posts">
     <div v-if="posts.length > 0" class="table-wrap">
       <div></div>
-      <table>
+      <table class="test">
         <tr>
-          <td>Name</td>
-          <td>Place</td>
-          <td>Date</td>
-          <td>Start</td>
-          <td>End</td>
-          <td>Price</td>
-
+          <th>Name</th>
+          <th>Place</th>
+          <th>Date</th>
+          <th>Start</td>
+          <th>End</th>
+          <th>Price</th>
         </tr>
         <tr v-for="(post, index) in posts" :key="index">
           <td>{{ post.name }}</td>
@@ -19,8 +18,6 @@
           <td>{{ post.start }}</td>
           <td>{{ post.end }}</td>
           <td>{{ post.price }}</td>
-
-            <!-- <a href="#" @click="deletePost(post._id)">Delete</a> -->
         </tr>
       </table>
     </div>
@@ -61,27 +58,29 @@ export default {
 }
 </script>
 <style type="text/css">
+body{
+  margin: 5%;
+}
 .table-wrap {
   width: 60%;
   margin: 0 auto;
   text-align: center;
 }
-table th,
+table th {
+  text-align: center;
+}
 table tr {
   text-align: left;
 }
 table thead {
-  background: #f2f2f2;
+color:pink;
 }
 table tr td {
   padding: 10px;
 }
-table tr:nth-child(odd) {
-  background: #f2f2f2;
-}
-table tr:nth-child(1) {
-  background: #4d7ef7;
-  color: #fff;
+
+tr:nth-child(even) {
+  background: #393366;
 }
 a {
   color: #4d7ef7;
@@ -94,5 +93,10 @@ a.add_post_link {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
+}
+table.test {
+    border-collapse: separate;
+    border-spacing: 10px;
+    *border-collapse: expression('separate', cellSpacing = '10px');
 }
 </style>

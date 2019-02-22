@@ -1,7 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const morgan = require('morgan')
 const mongoose = require('mongoose');
 const routes = require('../routes/api')
 const PORT = process.env.PORT || 8081
