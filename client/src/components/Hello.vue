@@ -1,42 +1,34 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <router-link v-bind:to="{ name: 'Posts' }" class>Go to the list of events</router-link>
-
+  <div id="hello">
+    <section class="content">
+      <img src="../assets/logo1.svg" alt="Where its @" @click="$router.push('/events')">
+      <h1>Where it´s @</h1>
+    </section>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'There will be the logo'
-    }
-  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-div .hello{
-  background-color: #231F42;
-}
-h1, h2 {
-  font-weight: normal;
-}
+<style>
 
-ul {
-  list-style-type: none;
-  padding: 0;
+#hello{
+  background: #231f42;
+  display: flex;
+  flex-direction: column;
 }
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+.content {
+  flex: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
-a {
-  color: #42b983;
+h1 {
+  color: red;
+  font-size: 2.2rem;
+  margin: 0.5rem 0;
 }
-</style>

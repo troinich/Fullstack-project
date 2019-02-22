@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '/home/natalia/posts/client/src/components/Hello'
 import Posts from '/home/natalia/posts/client/src/components/Posts'
-// import NewPost from '/home/natalia/posts/client/src/components/NewPost'
-// import EditPost from '/home/natalia/posts/client/src/components/EditPost'
+/* import Verify from '/home/natalia/posts/client/src/components/Verify'
+import Ticket from '/home/natalia/posts/client/src/components/Ticket' */
+import Admin from '/home/natalia/posts/client/src/components/Admin'
 
 Vue.use(Router)
 
@@ -16,19 +17,31 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/posts',
+      path: '/events',
       name: 'Posts',
       component: Posts
-    }
-    /*    {
-      path: '/posts/new',
-      name: 'NewPost',
-      component: NewPost
-    } */
+    },
     /* {
-      path: '/posts/:id',
-      name: 'EditPost',
-      component: EditPost
-    } */
+      path: '/verify',
+      name: 'Verify',
+      component: Verify
+    },
+    {
+      path: '/tickets',
+      name: 'Ticket',
+      component: Ticket
+    },
+    {
+      path: '/pay',
+      name: 'pay',
+      component: Pay
+    }, */
+
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin
+    }
   ]
+
 })
